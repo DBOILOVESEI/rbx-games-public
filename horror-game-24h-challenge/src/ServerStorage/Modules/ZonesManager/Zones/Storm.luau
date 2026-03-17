@@ -26,7 +26,6 @@ function Zone.Update()
         return
     end
     Zone.LastDamage = current
-    print("yessir")
 
 	local roots = workspace:GetPartsInPart(Zone.Area, Zone.Filter)
 	if #roots < 1 then

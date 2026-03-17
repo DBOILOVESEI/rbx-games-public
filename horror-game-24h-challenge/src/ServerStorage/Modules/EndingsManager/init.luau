@@ -4,8 +4,11 @@ local MAIN = script
 local REMOTES = ReplicatedStorage.Remotes
 
 -- / REMOTE EVENTS
-local REMOTE_EVENTS = REMOTES.REMOTE_EVENTS
-local EndingRE = REMOTE_EVENTS:FindFirstChild("EndingRE")
+local REMOTE_EVENTS = REMOTES.RemoteEvents
+local EndingRE: RemoteEvent = REMOTE_EVENTS:FindFirstChild("Ending")
+
+-- / MODULES
+local Errors = require(MAIN.Errors)
 
 -- / MAIN
 local EndingsManager = {}
@@ -26,10 +29,16 @@ end
 function EndingsManager.Fire(endingName: string, args: {[any]: any})
     local ending = EndingsManager.Endings[endingName]
     if not ending then
+        warn(string.format(Errors.NO_ENDING, endingName))
         return
     end
 
     ending.Fire(args)
+
+    local packet = {}
+    packet.EndingName = ending.Name
+    packet.Description = ending.Description
+    EndingRE:FireAllClients(packet)
 end
 
 return EndingsManager

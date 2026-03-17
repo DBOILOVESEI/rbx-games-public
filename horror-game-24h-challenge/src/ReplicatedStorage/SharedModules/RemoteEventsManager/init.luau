@@ -1,7 +1,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- / ROOTS
 local MAIN = script
-local REMOTES = ReplicatedStorage.Remotes
+local REMOTES = ReplicatedStorage:WaitForChild("Remotes")
 
 -- / REMOTE EVENTS
 local REMOTE_EVENTS = REMOTES.RemoteEvents
@@ -17,7 +17,9 @@ function RemoteEventsManager.Init()
 
         local load = require(reModule)
         load.Connection = remoteEvent.OnClientEvent:Connect(load.OnRemoteEvent)
-    end  
+
+        print("init complete")
+    end
 end
 
 return RemoteEventsManager
