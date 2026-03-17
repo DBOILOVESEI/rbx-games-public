@@ -1,11 +1,11 @@
 local Dialogs = {}
 
 Dialogs[1] = {
-    Dialog = "Oh boy, I hope nothing bad happens."
+    Dialog = "Brrr... It's so cold here."
 }
 
 Dialogs[2] = {
-    Dialog = "Holy crap, is that Peter Griffin?",
+    Dialog = "The cabin is just ahead. I need to hurry up.",
     Delay = 5
 }
 
