@@ -6,9 +6,10 @@ local UIsManager = require(SHARED_MODULES.UIsManager)
 
 -- / MAIN
 local RemoteEvent = {}
-RemoteEvent.UIName = "Ending"
+RemoteEvent.UIName = "Dialog"
 
 function RemoteEvent.OnRemoteEvent(packet)
+    print("haha")
     packet.UIName = RemoteEvent.UIName
     UIsManager.Render(packet)
 end

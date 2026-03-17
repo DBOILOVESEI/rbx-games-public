@@ -38,6 +38,8 @@ function EndingsManager.Fire(endingName: string, args: {[any]: any})
     local packet = {}
     packet.EndingName = ending.Name
     packet.Description = ending.Description
+    packet.NameColor = ending.NameColor
+
     EndingRE:FireAllClients(packet)
 end
 

@@ -17,8 +17,6 @@ function RemoteEventsManager.Init()
 
         local load = require(reModule)
         load.Connection = remoteEvent.OnClientEvent:Connect(load.OnRemoteEvent)
-
-        print("init complete")
     end
 end
 

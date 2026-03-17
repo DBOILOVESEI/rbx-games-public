@@ -15,13 +15,11 @@ Objects.UIName = ROOT.Name
 function Objects.Init()
     local ui = PlayerGui:WaitForChild(Objects.UIName)
     local holder = ui:FindFirstChild("Holder")
-    local endingText = holder:FindFirstChild("Ending")
-    local descText = holder:FindFirstChild("Description")
+    local dialogText = holder:FindFirstChild("Dialog") 
 
     Objects.UI = ui
     Objects.Holder = holder
-    Objects.EndingText = endingText
-    Objects.DescriptionText = descText
+    Objects.DialogText = dialogText
 end
 
 return Objects

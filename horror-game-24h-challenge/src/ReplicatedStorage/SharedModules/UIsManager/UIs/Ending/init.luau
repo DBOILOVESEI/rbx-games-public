@@ -13,6 +13,8 @@ local UI = {}
 function UI.Init()
    Objects.Init()
 
+   Objects.UI.Enabled = true
+
    local holder = Objects.Holder
    local transitionInfo = TweenInfo.new(
       Config.FADE_DURATION,
@@ -38,6 +40,10 @@ function UI.Render(packet)
 
 	endingText.Text = endingName
 	descText.Text = desc
+
+   if packet.NameColor then
+		endingText.TextColor3 = packet.NameColor
+   end
 
    UI.Transition:Play()
 end
