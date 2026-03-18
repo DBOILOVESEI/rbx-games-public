@@ -12,7 +12,6 @@ local Dialogs = require(MAIN.Dialogs)
 
 -- / MAIN
 local Timeline = {}
-Timeline.Order = 1
 
 function Timeline.Fire()
     for i = 1, #Dialogs, 1 do

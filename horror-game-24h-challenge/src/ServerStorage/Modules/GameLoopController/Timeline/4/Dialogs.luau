@@ -5,7 +5,7 @@ Dialogs[1] = {
 }
 
 Dialogs[2] = {
-    Dialog = "How can grandma live in such cold place all the time?",
+    Dialog = "How can grandma live in such a cold place like this?",
     Delay = 5
 }
 Dialogs[3] = {

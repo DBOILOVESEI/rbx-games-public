@@ -11,7 +11,7 @@ local UIsManager = require(SHARED_MODULES.UIsManager)
 -- / MAIN
 local RemoteEvent = {}
 RemoteEvent.Config = {}
-RemoteEvent.Config.DELAY_KICK = 2
+RemoteEvent.Config.DELAY_KICK = 5
 RemoteEvent.Config.KICK_MESSAGE = "Rejoin to replay!"
 RemoteEvent.Config.UI_NAME = "Ending"
 

@@ -13,6 +13,7 @@ local Errors = require(MAIN.Errors)
 -- / MAIN
 local EndingsManager = {}
 EndingsManager.Endings = {}
+EndingsManager.EndingActive = false
 
 function EndingsManager.Init()
     for _, endingModule in MAIN.Endings:GetChildren() do
@@ -27,11 +28,15 @@ function EndingsManager.Init()
 end
 
 function EndingsManager.Fire(endingName: string, args: {[any]: any})
+    if EndingsManager.EndingActive == true then return end
+
     local ending = EndingsManager.Endings[endingName]
     if not ending then
         warn(string.format(Errors.NO_ENDING, endingName))
         return
     end
+
+	EndingsManager.EndingActive = true
 
     ending.Fire(args)
 

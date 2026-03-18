@@ -27,12 +27,16 @@ function Zone.Init()
 end
 
 function Zone.Update()
+    if Zone.Active == false then return end
+
 	local roots = workspace:GetPartsInPart(Zone.Area, Zone.Filter)
 	if #roots < 1 then
 		return
 	end
 
-    Zone.SFX:Play()
+    if Zone.SFX.Playing == false then
+        Zone.SFX:Play()
+    end
     Zone.Atmosphere.Density = 0.3
     Zone.Atmosphere.Haze = 0
     

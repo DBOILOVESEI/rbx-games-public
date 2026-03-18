@@ -6,6 +6,7 @@ local Teams = game:GetService("Teams")
 local ZONES = workspace.Zones
 local MODULES = ServerStorage.Modules
 local DOORS = workspace.Doors
+local ASSETS = ServerStorage.Assets
 
 -- / MODULES
 local ZonesManager = require(MODULES.ZonesManager)
@@ -22,10 +23,15 @@ Timeline.Door = DOORS.Door
 Timeline.OpenCFrame = DOORS.OpenDoor.CFrame
 Timeline.CloseCFrame = DOORS.CloseDoor.CFrame
 
-function Timeline.Fire()
-    Timeline.SFX:Play()
+Timeline.Grandma = ASSETS.Models:FindFirstChild("Grandma")
 
-    Timeline.Door:PivotTo(Timeline.CloseCFrame)
+function Timeline.Fire()
+    Timeline.Grandma.Parent = workspace
+    if Timeline.SFX.Playing == false then
+        Timeline.SFX:Play()
+    end
+
+    Timeline.Door:PivotTo(Timeline.OpenCFrame)
 end
 
 return Timeline

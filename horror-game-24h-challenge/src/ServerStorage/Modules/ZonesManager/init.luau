@@ -19,6 +19,8 @@ function ZoneController.Init()
         local load = require(zoneModule)
         load.Init()
 
+        if load.Active == false then continue end
+
         ZoneController.Zones[zoneName] = load
     end
 
@@ -38,17 +40,16 @@ function ZoneController.LoadZone(zoneName: string)
     end
 
     local load = require(zoneModule)
-    table.insert(ZoneController.Zones, load)
+    load.Active = true
+    print("loaded")
+	ZoneController.Zones[zoneName] = load
 end
 
 function ZoneController.UnloadZone(zoneName: string)
     local load = ZoneController.Zones[zoneName]
     if not load then return end
 
-    local activeIndex = table.find(ZoneController.Zones, load)
-    if not activeIndex then return end
-
-    table.remove(ZoneController.Zones, activeIndex)
+    ZoneController.Zones[zoneName] = nil
 end
 
 function ZoneController.BeginUpdate()

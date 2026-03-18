@@ -12,17 +12,12 @@ GameLoopController.Timeline = {}
 GameLoopController.TimelineIndex = 1
 
 function GameLoopController.Init()
-    local current = 0
     for _, timelineModule in MAIN.Timeline:GetChildren() do
-        current += 1
 
         local i = tonumber(timelineModule.Name)
         if not i then
             warn(Errors.NAME_NOT_NUMBER)
-        end
-
-        if i ~= current then
-            warn(Errors.NOT_INCREMENTAL)
+            continue
         end
 
         local load = require(timelineModule)
@@ -42,7 +37,7 @@ function GameLoopController.StartGameLoop()
         GameLoopController.TimelineIndex += 1
         -- Timeout safe guard
         task.wait()
-    end 
+    end
 end
 
 function GameLoopController.EndGameLoop()

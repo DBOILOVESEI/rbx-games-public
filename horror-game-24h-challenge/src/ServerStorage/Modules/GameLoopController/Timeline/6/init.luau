@@ -5,7 +5,6 @@ local Teams = game:GetService("Teams")
 -- / ROOTS
 local ZONES = workspace.Zones
 local MODULES = ServerStorage.Modules
-local DOORS = workspace.Doors
 
 -- / MODULES
 local ZonesManager = require(MODULES.ZonesManager)
@@ -13,19 +12,13 @@ local ZonesManager = require(MODULES.ZonesManager)
 -- / MAIN
 local Timeline = {}
 Timeline.Config = {}
-Timeline.Config.ZONE_NAME = "FrontDoor"
+Timeline.Config.ZONE_NAME = "InsideDoor"
 
 Timeline.Zone = ZONES:FindFirstChild(Timeline.Config.ZONE_NAME)
-Timeline.SFX = Timeline.Zone:FindFirstChild("DoorSFX")
-
-Timeline.Door = DOORS.Door
-Timeline.OpenCFrame = DOORS.OpenDoor.CFrame
-Timeline.CloseCFrame = DOORS.CloseDoor.CFrame
+Timeline.SFX = Timeline.Zone:FindFirstChild("KnockSFX")
 
 function Timeline.Fire()
     Timeline.SFX:Play()
-
-    Timeline.Door:PivotTo(Timeline.CloseCFrame)
 end
 
 return Timeline

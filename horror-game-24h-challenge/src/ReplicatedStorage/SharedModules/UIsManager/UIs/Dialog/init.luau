@@ -26,6 +26,8 @@ function UI.Render(packet)
    local dialogColor = packet.DialogColor
    if dialogColor then
       dialogText.TextColor3 = dialogColor
+   else
+      dialogText.TextColor3 = Config.DEFAULT_TEXT_COLOR
    end
 end
 
