@@ -25,7 +25,30 @@ function ZoneController.Init()
     print(Errors.INIT_COMPLETE)
 
     ZoneController.BeginUpdate()
+end
 
+function ZoneController.LoadZone(zoneName: string)
+    local zoneModule = MAIN.Zones:FindFirstChild(zoneName)
+	if not zoneModule then
+		return
+	end
+
+    if ZoneController.Zones[zoneName] then
+        return
+    end
+
+    local load = require(zoneModule)
+    table.insert(ZoneController.Zones, load)
+end
+
+function ZoneController.UnloadZone(zoneName: string)
+    local load = ZoneController.Zones[zoneName]
+    if not load then return end
+
+    local activeIndex = table.find(ZoneController.Zones, load)
+    if not activeIndex then return end
+
+    table.remove(ZoneController.Zones, activeIndex)
 end
 
 function ZoneController.BeginUpdate()
@@ -39,7 +62,12 @@ function ZoneController.BeginUpdate()
 end
 
 function ZoneController.Update()
-    for zoneName, zone in ZoneController.Zones do
+    for _, zone in ZoneController.Zones do
+		if zone.Active == false then
+			ZoneController.UnloadZone(zone.Name)
+			continue
+		end
+
         zone.Update()
     end
 end

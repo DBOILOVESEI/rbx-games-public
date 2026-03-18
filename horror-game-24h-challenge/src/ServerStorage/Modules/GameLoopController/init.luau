@@ -14,12 +14,14 @@ GameLoopController.TimelineIndex = 1
 function GameLoopController.Init()
     local current = 0
     for _, timelineModule in MAIN.Timeline:GetChildren() do
+        current += 1
+
         local i = tonumber(timelineModule.Name)
         if not i then
             warn(Errors.NAME_NOT_NUMBER)
         end
 
-        if i ~= current+1 then
+        if i ~= current then
             warn(Errors.NOT_INCREMENTAL)
         end
 

@@ -9,7 +9,6 @@ local RemoteEvent = {}
 RemoteEvent.UIName = "Dialog"
 
 function RemoteEvent.OnRemoteEvent(packet)
-    print("haha")
     packet.UIName = RemoteEvent.UIName
     UIsManager.Render(packet)
 end
