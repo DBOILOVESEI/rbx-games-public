@@ -12,7 +12,7 @@ local ZonesManager = require(MODULES.ZonesManager)
 -- / MAIN
 local Timeline = {}
 Timeline.Config = {}
-Timeline.Config.DELAY_KNOCK = 5
+Timeline.Config.DELAY_KNOCK = 30
 Timeline.Config.ZONE_NAME = "InsideDoor"
 
 Timeline.Zone = ZONES:FindFirstChild(Timeline.Config.ZONE_NAME)
