@@ -1,3 +1,5 @@
+local BadgeService = game:GetService("BadgeService")
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- / ROOTS
 local MAIN = script
@@ -37,6 +39,14 @@ function EndingsManager.Fire(endingName: string, args: {[any]: any})
     end
 
 	EndingsManager.EndingActive = true
+    local badgeID = ending.BadgeID
+    if badgeID then
+        for _, plr: Player in Players:GetPlayers() do
+            if BadgeService:UserHasBadgeAsync(plr.UserId, badgeID) == true then continue end
+
+            BadgeService:AwardBadgeAsync(plr.UserId, badgeID)
+        end
+    end
 
     ending.Fire(args)
 
