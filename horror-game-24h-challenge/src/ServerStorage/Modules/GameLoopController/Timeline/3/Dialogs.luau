@@ -17,4 +17,10 @@ Dialogs[4] = {
     Dialog = "Whatever. I'm gonna take a look around the house.",
     Delay = 5
 }
+
+Dialogs[5] = {
+    Dialog = nil,
+    Delay = 4
+}
+
 return Dialogs

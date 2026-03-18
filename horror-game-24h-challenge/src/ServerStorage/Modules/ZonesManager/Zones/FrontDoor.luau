@@ -18,6 +18,8 @@ function Zone.Init()
     Zone.SFX = Zone.Area:FindFirstChild("DoorSFX")
     Zone.Atmosphere = Lighting:FindFirstChild("Atmosphere")
 
+    Zone.StormZone = ZONES:FindFirstChild("Storm")
+
     Zone.Filter = OverlapParams.new()
     Zone.Filter.CollisionGroup = Zone.CollisionGroup
     Zone.Filter.FilterDescendantsInstances = {Zone.Area}
@@ -31,9 +33,15 @@ function Zone.Update()
 	end
 
     Zone.SFX:Play()
-    Zone.Atmosphere.Density = 0.6
-    Zone.Atmosphere.Haze = 0.05
+    Zone.Atmosphere.Density = 0.3
+    Zone.Atmosphere.Haze = 0
+    
+    for _, vfx in Zone.StormZone:GetChildren() do
+        if not vfx:IsA("ParticleEmitter") then continue end
 
+        vfx.Enabled = false
+    end
+    
     for _, plr in Players:GetPlayers() do
         local char = plr.Character or plr.CharacterAdded:Wait()
         if not char then
